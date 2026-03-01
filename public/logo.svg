@@ -1,0 +1,21 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="100" cy="100" r="95" fill="#2563eb" />
+  
+  <!-- Icon: stylized arrow/growth symbol -->
+  <g transform="translate(100, 100)">
+    <!-- Left vertical line -->
+    <rect x="-8" y="-35" width="4" height="50" fill="white" rx="2" />
+    
+    <!-- Right vertical line (slightly taller) -->
+    <rect x="4" y="-40" width="4" height="55" fill="white" rx="2" />
+    
+    <!-- Middle vertical line (tallest) -->
+    <rect x="-2" y="-45" width="4" height="60" fill="white" rx="2" />
+    
+    <!-- Arrow pointing up -->
+    <g transform="translate(-2, -50)">
+      <polygon points="0,-8 6,0 -6,0" fill="white" />
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,303 @@
+/** @import must precede all other statements */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /**
+   * Tailwind CSS theme
+   * tailwind.config.ts expects the following color variables to be expressed as HSL values.
+   * A different format will require also updating the theme in tailwind.config.ts.
+  */
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-white text-brand-text font-sans;
+    color: #1f2937;
+  }
+
+  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  h1 {
+    @apply text-4xl font-bold text-brand-text;
+  }
+
+  h2 {
+    @apply text-3xl font-bold text-brand-text;
+  }
+
+  h3 {
+    @apply text-2xl font-bold text-brand-text;
+  }
+
+  h4 {
+    @apply text-xl font-bold text-brand-text;
+  }
+
+  h5 {
+    @apply text-lg font-semibold text-brand-text;
+  }
+
+  h6 {
+    @apply text-base font-semibold text-brand-text;
+  }
+
+  p {
+    @apply text-brand-text leading-relaxed;
+  }
+
+  a {
+    @apply text-brand-primary hover:text-brand-primary/80 transition-colors;
+  }
+
+  pre,
+  code {
+    overflow-x: auto;
+    white-space: pre;
+  }
+
+  /* Custom text selection styling */
+  ::selection {
+    @apply bg-brand-accent/30 text-brand-text;
+  }
+
+  ::-moz-selection {
+    @apply bg-brand-accent/30 text-brand-text;
+  }
+
+  /* Fade animation for testimonials */
+  @keyframes fadeInOut {
+    0% {
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  .animate-fade {
+    animation: fadeInOut 5s ease-in-out forwards;
+  }
+}
+
+@layer components {
+  /* Container system */
+  .container-custom {
+    @apply max-w-6xl mx-auto px-6;
+  }
+
+  /* Header styles */
+  .header-sticky {
+    @apply sticky top-0 z-50 w-full backdrop-blur-sm bg-white/95 shadow-sm;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply px-5 py-2.5 bg-brand-primary text-white rounded-lg border-2 border-brand-primary hover:bg-blue-700 hover:border-blue-700 transition-colors shadow-sm hover:shadow-md;
+  }
+
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-white border-2 border-gray-300 text-brand-text rounded-lg hover:bg-gray-100 hover:border-brand-primary transition-colors shadow-sm hover:shadow-md;
+  }
+
+  .btn-accent {
+    @apply text-brand-accent border-2 border-brand-accent px-5 py-2.5 rounded-lg hover:bg-orange-50 hover:border-orange-600 transition-colors;
+  }
+
+  /* Service card - Full featured */
+  .service-card {
+    @apply bg-white rounded-2xl p-8 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+
+  /* Service card - Compact version for Services page */
+  .service-card-compact {
+    @apply bg-white rounded-2xl p-6 border border-gray-100 hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+  }
+
+  /* Orbit spinner */
+  .orbit-spinner {
+    @apply w-8 h-8 border-2 border-transparent border-t-brand-accent rounded-full animate-orbit;
+  }
+
+  /* Section spacing */
+  .section-py {
+    @apply py-16 md:py-24;
+  }
+
+  /* Grid layouts */
+  .grid-3-col {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+  }
+
+  .grid-2-col {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-8;
+  }
+
+  /* Dynamic glow effect with mouse tracking */
+  .dynamic-glow {
+    @apply relative overflow-hidden;
+    background-color: inherit !important;
+  }
+
+  .dynamic-glow:hover {
+    @apply bg-inherit !important;
+  }
+
+  .dynamic-glow::before {
+    content: '';
+    @apply absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300;
+    background: radial-gradient(
+      circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(245, 158, 11, 0.3) 0%,
+      rgba(245, 158, 11, 0.15) 30%,
+      transparent 70%
+    );
+    z-index: 0;
+  }
+
+  .dynamic-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  /* Ensure content stays above glow effect */
+  .dynamic-glow > * {
+    @apply relative z-10;
+  }
+
+  /* Buttons inside dynamic-glow should stay above the overlay */
+  .dynamic-glow > button,
+  .dynamic-glow > .btn-primary,
+  .dynamic-glow > .btn-secondary,
+  .dynamic-glow > .btn-accent,
+  .dynamic-glow [role="button"] {
+    position: relative;
+    z-index: 20;
+    opacity: 1;
+  }
+
+  /* Ensure button elements never have their opacity reduced */
+  button:disabled,
+  .btn-primary:disabled,
+  .btn-secondary:disabled,
+  .btn-accent:disabled {
+    opacity: 1 !important;
+  }
+
+  /* Ensure button hover/focus states don't reduce opacity */
+  button:hover,
+  button:focus,
+  button:focus-visible,
+  .btn-primary:hover,
+  .btn-primary:focus,
+  .btn-secondary:hover,
+  .btn-secondary:focus,
+  .btn-accent:hover,
+  .btn-accent:focus {
+    opacity: 1 !important;
+  }
+
+  /* Remove glow overlay effect from button elements */
+  button.dynamic-glow::before,
+  .btn-primary.dynamic-glow::before,
+  .btn-secondary.dynamic-glow::before,
+  .btn-accent.dynamic-glow::before {
+    display: none !important;
+  }
+
+  /* Prevent glow effect on form containers - inquiry forms should remain clean */
+  form.dynamic-glow::before,
+  .inquiry-form-container.dynamic-glow::before,
+  .contact-form-wrapper.dynamic-glow::before {
+    display: none !important;
+  }
+}
