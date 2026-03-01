@@ -6,6 +6,14 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 import { SEOHead } from '@/components/SEOHead';
 import { SEO_CONFIG } from '@/config/seo';
 import { generateServiceSchema, generateOrganizationSchema } from '@/utils/structured-data';
+import { InteractiveHeroGraphic } from '@/components/interactive/InteractiveHeroGraphic';
+import { InteractiveProblems } from '@/components/interactive/InteractiveProblems';
+import { FlipCardGrid } from '@/components/interactive/FlipCard';
+import { MetricsGauge } from '@/components/interactive/MetricsGauge';
+import { InteractiveTimeline } from '@/components/interactive/InteractiveTimeline';
+import { BeforeAfterChart } from '@/components/interactive/BeforeAfterChart';
+import { InteractiveWhiteboard } from '@/components/interactive/InteractiveWhiteboard';
+import { EnhancedCalculator } from '@/components/interactive/EnhancedCalculator';
 
 export default function ServiceDetail() {
   const { id } = useParams();
@@ -65,16 +73,28 @@ export default function ServiceDetail() {
       <section className="bg-brand-bg py-8 md:py-16 lg:py-20">
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 lg:gap-12 items-center">
-            {/* Image on top for mobile, left on desktop */}
-            {service.imageUrl && (
-              <div className="order-first lg:order-none rounded-2xl overflow-hidden shadow-lg">
-                <img
-                  src={service.imageUrl}
-                  alt={service.title}
-                  className="w-full h-48 sm:h-64 md:h-72 lg:h-80 object-cover"
+            {/* Interactive Graphic or Image */}
+            <div className="order-first lg:order-none">
+              {service.heroGraphicType && service.heroGraphicType !== 'illustration' ? (
+                <InteractiveHeroGraphic
+                  type={service.heroGraphicType}
+                  codeComment={service.heroCodeComment}
+                  metrics={service.metrics}
                 />
-              </div>
-            )}
+              ) : service.heroGraphicType === 'illustration' ? (
+                <InteractiveHeroGraphic
+                  type="illustration"
+                />
+              ) : service.imageUrl ? (
+                <div className="rounded-2xl overflow-hidden shadow-lg">
+                  <img
+                    src={service.imageUrl}
+                    alt={service.title}
+                    className="w-full h-48 sm:h-64 md:h-72 lg:h-80 object-cover"
+                  />
+                </div>
+              ) : null}
+            </div>
 
             {/* Text Content */}
             <div>
@@ -86,6 +106,11 @@ export default function ServiceDetail() {
                   {service.title}
                 </h1>
               </div>
+              {service.shortIntro && (
+                <p className="text-base md:text-lg lg:text-xl text-brand-text font-semibold mb-3 leading-relaxed">
+                  {service.shortIntro}
+                </p>
+              )}
               <p className="text-base md:text-lg lg:text-xl text-brand-text-soft leading-relaxed">
                 {service.description}
               </p>
@@ -100,80 +125,140 @@ export default function ServiceDetail() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 lg:gap-12">
           {/* Main Content */}
           <div className="lg:col-span-2">
-            {/* Features */}
-            <div className="mb-8 md:mb-12">
-              <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
-                What We Offer
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                {service.features.map((feature, idx) => (
-                  <div key={idx} className="flex gap-4">
-                    <CheckCircle2 className="w-6 h-6 text-brand-secondary flex-shrink-0 mt-1" />
-                    <div>
-                      <h3 className="font-semibold text-brand-text">{feature}</h3>
-                      <p className="text-sm text-brand-text-soft mt-1">
-                        Comprehensive solution tailored to your needs
-                      </p>
+            {/* Interactive Problems & Solutions */}
+            {service.topProblems && service.topProblems.length > 0 && service.offerings && service.offerings.length > 0 && (
+              <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-gray-200">
+                <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
+                  We Understand Your Challenges
+                </h2>
+                <InteractiveProblems
+                  problems={service.topProblems}
+                  offerings={service.offerings}
+                  accentColor="#3b82f6"
+                />
+              </div>
+            )}
+
+            {/* Flip Cards - What We Offer */}
+            {service.offerings && service.offerings.length > 0 ? (
+              <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-gray-200">
+                <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
+                  What We Deliver (Hover to Learn More)
+                </h2>
+                <FlipCardGrid
+                  offerings={service.offerings}
+                  accentColor="#3b82f6"
+                />
+              </div>
+            ) : (
+              <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-gray-200">
+                <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
+                  What We Offer
+                </h2>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+                  {service.features.map((feature, idx) => (
+                    <div key={idx} className="flex gap-4">
+                      <CheckCircle2 className="w-6 h-6 text-brand-secondary flex-shrink-0 mt-1" />
+                      <div>
+                        <h3 className="font-semibold text-brand-text">{feature}</h3>
+                        <p className="text-sm text-brand-text-soft mt-1">
+                          Comprehensive solution tailored to your needs
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Deliverables & Metrics */}
+            {(service.deliverables || service.metrics) && (
+              <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-gray-200">
+                {service.metrics && service.metrics.length > 0 && (
+                  <div className="mb-8">
+                    <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
+                      Our Impact by the Numbers
+                    </h2>
+                    <MetricsGauge
+                      metrics={service.metrics}
+                      accentColor="#3b82f6"
+                    />
+                  </div>
+                )}
+
+                {service.deliverables && service.deliverables.length > 0 && (
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
+                      What You'll Receive
+                    </h2>
+                    <div className="space-y-3">
+                      {service.deliverables.map((deliverable, idx) => (
+                        <div key={idx} className="flex gap-4 p-4 rounded-lg border border-gray-200 hover:border-blue-500 hover:bg-blue-50 transition-all duration-300">
+                          <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand-primary text-white flex items-center justify-center text-sm font-bold">
+                            ✓
+                          </div>
+                          <div className="flex-1">
+                            <h4 className="font-semibold text-brand-text">{deliverable.name}</h4>
+                            <p className="text-sm text-brand-text-soft mt-1">{deliverable.description}</p>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                ))}
+                )}
               </div>
-            </div>
+            )}
 
-            {/* Why Choose */}
-            <div className="mb-8 md:mb-12 bg-brand-bg rounded-xl p-4 md:p-6 lg:p-8">
-              <h2 className="text-xl md:text-2xl font-bold text-brand-text mb-4 md:mb-6">
-                Why Choose {service.title} with Us?
-              </h2>
-              <ul className="space-y-3 md:space-y-4">
-                <li className="flex gap-3">
-                  <span className="text-brand-primary font-bold">✓</span>
-                  <span className="text-brand-text">Expert team with years of industry experience</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-primary font-bold">✓</span>
-                  <span className="text-brand-text">Transparent communication and regular updates</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-primary font-bold">✓</span>
-                  <span className="text-brand-text">Customized solutions tailored to your business</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-primary font-bold">✓</span>
-                  <span className="text-brand-text">Proven track record of delivering results</span>
-                </li>
-                <li className="flex gap-3">
-                  <span className="text-brand-primary font-bold">✓</span>
-                  <span className="text-brand-text">Dedicated support throughout your journey</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Process */}
-            <div>
-              <h2 className="text-2xl font-bold text-brand-text mb-8">
-                Our Process
-              </h2>
-              <div className="space-y-6">
-                {[
-                  { step: '1', title: 'Consultation', desc: 'We discuss your needs and goals' },
-                  { step: '2', title: 'Assessment', desc: 'Thorough analysis of your current situation' },
-                  { step: '3', title: 'Strategy', desc: 'Custom plan tailored to your business' },
-                  { step: '4', title: 'Execution', desc: 'Implementation with regular updates' },
-                  { step: '5', title: 'Results', desc: 'Delivery and ongoing support' },
-                ].map((item, idx) => (
-                  <div key={idx} className="flex gap-6">
-                    <div className="flex-shrink-0 w-10 h-10 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
-                      {item.step}
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-brand-text text-lg">{item.title}</h3>
-                      <p className="text-brand-text-soft">{item.desc}</p>
-                    </div>
-                  </div>
-                ))}
+            {/* Interactive Process Timeline */}
+            {service.processSteps && service.processSteps.length > 0 ? (
+              <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-gray-200">
+                <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
+                  Our Process (Click Steps for Insights)
+                </h2>
+                <InteractiveTimeline
+                  steps={service.processSteps}
+                  accentColor="#3b82f6"
+                />
               </div>
-            </div>
+            ) : (
+              <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-gray-200">
+                <h2 className="text-2xl font-bold text-brand-text mb-8">
+                  Our Process
+                </h2>
+                <div className="space-y-6">
+                  {[
+                    { step: '1', title: 'Consultation', desc: 'We discuss your needs and goals' },
+                    { step: '2', title: 'Assessment', desc: 'Thorough analysis of your current situation' },
+                    { step: '3', title: 'Strategy', desc: 'Custom plan tailored to your business' },
+                    { step: '4', title: 'Execution', desc: 'Implementation with regular updates' },
+                    { step: '5', title: 'Results', desc: 'Delivery and ongoing support' },
+                  ].map((item, idx) => (
+                    <div key={idx} className="flex gap-6">
+                      <div className="flex-shrink-0 w-10 h-10 bg-brand-primary text-white rounded-full flex items-center justify-center font-bold">
+                        {item.step}
+                      </div>
+                      <div>
+                        <h3 className="font-bold text-brand-text text-lg">{item.title}</h3>
+                        <p className="text-brand-text-soft">{item.desc}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Case Studies */}
+            {service.caseStudies && service.caseStudies.length > 0 && (
+              <div className="mb-8 md:mb-12 pb-8 md:pb-12 border-b border-gray-200">
+                <h2 className="text-2xl md:text-3xl font-bold text-brand-text mb-6 md:mb-8">
+                  Real Results from Real Clients
+                </h2>
+                <BeforeAfterChart
+                  caseStudies={service.caseStudies}
+                  accentColor="#3b82f6"
+                />
+              </div>
+            )}
           </div>
 
           {/* Sidebar - Contact Form */}
@@ -188,6 +273,52 @@ export default function ServiceDetail() {
               <ContactForm defaultService={id} variant="compact" />
             </div>
           </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Calculator Section */}
+      {service.calculatorType && service.calculatorType !== 'none' && (
+        <section className="py-8 md:py-16 lg:py-24 w-full">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <EnhancedCalculator
+              type={service.calculatorType}
+              disclaimer={service.calculatorHonestDisclaimer}
+              accentColor="#3b82f6"
+            />
+          </div>
+        </section>
+      )}
+
+      {/* Interactive CTA Section with Whiteboard */}
+      <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-8 md:py-16 lg:py-24 w-full">
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Text */}
+            <div>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-brand-text mb-4">
+                Ready to Transform?
+              </h2>
+              <p className="text-base md:text-lg text-brand-text-soft leading-relaxed mb-6">
+                Let's sit down (virtually) and map out your success strategy. We'll collaborate, brainstorm, and create a roadmap tailored to your unique challenges.
+              </p>
+              <div className="flex gap-4">
+                <Link
+                  to="#"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.querySelector('[data-contact-form]')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-brand-primary text-white rounded-lg hover:bg-blue-700 transition-colors font-medium"
+                >
+                  Start Your Journey
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Interactive Whiteboard */}
+            <InteractiveWhiteboard accentColor="#3b82f6" />
           </div>
         </div>
       </section>
