@@ -41,7 +41,7 @@ export default function BlogPost() {
   const structuredData = generateArticleSchema(
     post.title,
     post.excerpt,
-    post.imageUrl || 'https://operateforyou.com/logo.png',
+    post.imageUrl || 'https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2F19f1202963bc4c34b9df168ee45b73da',
     'OperateForYou',
     post.date,
   );

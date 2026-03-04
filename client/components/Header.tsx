@@ -36,7 +36,7 @@ export function Header() {
       <div className="container-custom h-20 flex items-center justify-between">
         {/* Logo and Slogan */}
         <Link to="/" className="flex items-center gap-4 flex-shrink-0 hover:opacity-80 transition-opacity">
-          <img src="https://cdn.builder.io/api/v1/image/assets%2Fe855c778fc3e4b59839b13c5b558557d%2F3736476c84744af4a03c5cabc784c358?format=webp&width=800&height=1200" alt="OperateForYou" className="h-14 w-auto object-contain" />
+          <img src="https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2F19f1202963bc4c34b9df168ee45b73da" alt="OperateForYou" className="h-12 w-auto object-contain" />
           <div className="hidden md:block border-l border-brand-divider pl-4">
             <div className="text-xs font-medium text-brand-text-medium leading-tight">
               <div>Complete Business Solutions for</div>

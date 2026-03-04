@@ -28,8 +28,8 @@ export const COMPANY = {
   domain: 'operateforyou.com',
 
   // Branding
-  logo: 'https://operateforyou.com/logo.png',
-  favicon: 'https://operateforyou.com/favicon.ico',
+  logo: 'https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2F19f1202963bc4c34b9df168ee45b73da',
+  favicon: 'https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2F19f1202963bc4c34b9df168ee45b73da',
   brandColor: '#0066CC',
 
   // Social Links
