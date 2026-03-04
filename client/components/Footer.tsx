@@ -42,7 +42,7 @@ export function Footer() {
           <div>
             <Link to="/" className="flex items-center gap-1 mb-4 hover:opacity-80 transition-opacity">
               <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2Ffb6fb834270f414b9c5cd5f21643fcc1" alt="OperateForYou" className="h-10 w-auto object-contain brightness-0 invert" />
-              <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2F11b71ac627234a73ab8fdf09d5c02add" alt="OperateForYou" className="h-28 w-auto object-contain brightness-0 invert translate-y-1" />
+              <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2F11b71ac627234a73ab8fdf09d5c02add" alt="OperateForYou" className="h-28 w-auto object-contain brightness-0 invert -translate-x-[5px] translate-y-[1px]" />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-3">
               Your trusted partner for digital marketing, web development, business registration, and financial services in India.
