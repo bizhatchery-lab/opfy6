@@ -278,33 +278,6 @@ export default function Index() {
               );
             })}
           </div>
-
-          {/* Right Column - Static Decorative Graphic */}
-          <div className="hidden lg:flex justify-end mt-6">
-            <div className="relative w-48 h-40">
-              {/* Gradient background circle - static, no animation */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="absolute w-40 h-40 bg-gradient-to-br from-brand-primary/8 to-brand-accent/8 rounded-full blur-2xl"></div>
-
-                {/* Static decorative shapes */}
-                <div className="absolute top-8 left-4 w-8 h-8 bg-brand-primary/15 rounded-lg rotate-12"></div>
-                <div className="absolute bottom-8 right-2 w-10 h-10 bg-brand-accent/15 rounded-full"></div>
-                <div className="absolute top-20 right-4 w-6 h-6 bg-brand-primary/20 rounded-lg rotate-45"></div>
-
-                {/* Static upward arrow */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-3xl text-brand-primary/25">↗</div>
-                </div>
-              </div>
-
-              {/* Subtle dots pattern */}
-              <div className="absolute inset-0 grid grid-cols-3 gap-3 opacity-5">
-                {[...Array(9)].map((_, i) => (
-                  <div key={i} className="w-1.5 h-1.5 bg-brand-text rounded-full"></div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
