@@ -40,9 +40,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-6">
           {/* Column 1: Logo & Description */}
           <div>
-            <Link to="/" className="flex items-center gap-1 mb-4 hover:opacity-80 transition-opacity">
-              <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2Ffb6fb834270f414b9c5cd5f21643fcc1" alt="OperateForYou" className="h-10 w-auto object-contain brightness-0 invert" />
-              <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2F11b71ac627234a73ab8fdf09d5c02add" alt="OperateForYou" className="h-28 w-auto object-contain brightness-0 invert translate-y-1" />
+            <Link to="/" className="mb-4 hover:opacity-80 transition-opacity inline-block">
+              <div className="flex items-center gap-1 px-2 py-1" style={{ backgroundColor: 'rgba(55, 65, 81, 0.5)', borderRadius: '10px', width: '146px', height: '48px', transform: 'translateX(13px)' }}>
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2Ffb6fb834270f414b9c5cd5f21643fcc1" alt="OperateForYou" className="h-10 w-auto object-contain brightness-0 invert" />
+                <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2F11b71ac627234a73ab8fdf09d5c02add" alt="OperateForYou" className="h-28 w-auto object-contain brightness-0 invert translate-y-1" style={{ transform: 'translateX(-9px) translateY(3px)' }} />
+              </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mb-3">
               Your trusted partner for digital marketing, web development, business registration, and financial services in India.
