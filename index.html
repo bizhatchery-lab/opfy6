@@ -17,7 +17,7 @@
     <meta name="revisit-after" content="7 days" />
 
     <!-- Canonical URL -->
-    <link rel="canonical" href="https://operateforyou.com" />
+    <link rel="canonical" href="https://operateforyou.com/" />
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#0066CC" />
@@ -28,9 +28,7 @@
     <meta property="og:url" content="https://operateforyou.com/" />
     <meta property="og:title" content="OperateForYou - Digital Marketing, Web Development & Business Solutions" />
     <meta property="og:description" content="Complete business solutions for growth, compliance, and marketing. Digital Marketing, Web Development, GST Registration, Business Registration, Accounting, and Finance assistance." />
-    <meta property="og:image" content="https://cdn.builder.io/api/v1/image/assets%2Fe855c778fc3e4b59839b13c5b558557d%2F3736476c84744af4a03c5cabc784c358?format=webp&width=1200&height=630" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
+    <meta property="og:image" content="https://operateforyou.com/logo.svg" />
     <meta property="og:site_name" content="OperateForYou" />
     <meta property="og:locale" content="en_IN" />
 
@@ -39,7 +37,7 @@
     <meta name="twitter:url" content="https://operateforyou.com/" />
     <meta name="twitter:title" content="OperateForYou - Digital Marketing, Web Development & Business Solutions" />
     <meta name="twitter:description" content="Complete business solutions for growth, compliance, and marketing. Digital Marketing, Web Development, GST Registration, Accounting, and Finance assistance." />
-    <meta name="twitter:image" content="https://cdn.builder.io/api/v1/image/assets%2Fe855c778fc3e4b59839b13c5b558557d%2F3736476c84744af4a03c5cabc784c358?format=webp&width=1200&height=630" />
+    <meta name="twitter:image" content="https://operateforyou.com/logo.svg" />
     <meta name="twitter:creator" content="@operateforyou" />
 
     <!-- Additional Meta Tags -->
@@ -49,29 +47,45 @@
     <meta name="apple-mobile-web-app-title" content="OperateForYou" />
 
     <!-- Favicon & Icons -->
-    <link rel="icon" type="image/webp" sizes="96x96" href="https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2Fca450ae6b50a4754bba7a035bf445dc5?format=webp&width=96&height=96" />
-    <link rel="icon" type="image/webp" sizes="192x192" href="https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2Fca450ae6b50a4754bba7a035bf445dc5?format=webp&width=192&height=192" />
-    <link rel="apple-touch-icon" sizes="192x192" href="https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2Fca450ae6b50a4754bba7a035bf445dc5?format=webp&width=192&height=192" />
-    <link rel="shortcut icon" href="https://cdn.builder.io/api/v1/image/assets%2Fb0634b3b99364a2491bc8186b37623f5%2Fca450ae6b50a4754bba7a035bf445dc5?format=webp&width=32&height=32" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <link rel="apple-touch-icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
 
     <!-- Preconnect to External Domains -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="preconnect" href="https://cdn.builder.io" />
 
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="https://api.ipify.org" />
-    <link rel="dns-prefetch" href="https://script.google.com" />
+    <!-- JSON-LD Structured Data: Organization -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "OperateForYou",
+        "url": "https://operateforyou.com/",
+        "logo": "https://operateforyou.com/logo.svg",
+        "description": "Complete business solutions including Digital Marketing, Web Development, Business Registration, GST Registration, Accounting, and Finance assistance",
+        "foundingDate": "2024",
+        "areaServed": "IN",
+        "sameAs": [
+          "https://twitter.com/operateforyou"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "Customer Service",
+          "url": "https://operateforyou.com/"
+        }
+      }
+    </script>
 
-    <!-- JSON-LD Structured Data (will be enhanced by React components) -->
+    <!-- JSON-LD Structured Data: WebSite -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "OperateForYou",
-        "url": "https://operateforyou.com",
-        "description": "Complete business solutions including Digital Marketing, Web Development, Business Registration, Accounting, and Finance assistance",
+        "url": "https://operateforyou.com/",
+        "description": "Complete business solutions for growth, compliance, and marketing",
         "potentialAction": {
           "@type": "SearchAction",
           "target": "https://operateforyou.com/search?q={search_term_string}",
@@ -83,7 +97,6 @@
 
   <body>
     <div id="root"></div>
-
     <script type="module" src="/client/App.tsx"></script>
   </body>
 </html>
