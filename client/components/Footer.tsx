@@ -41,7 +41,7 @@ export function Footer() {
           {/* Column 1: Logo & Description */}
           <div>
             <Link to="/" className="mb-4 hover:opacity-80 transition-opacity inline-block">
-              <div className="flex items-center gap-1 px-2 py-1" style={{ backgroundColor: 'rgba(55, 65, 81, 0.5)', borderRadius: '10px', width: '146px', height: '48px', transform: 'translateX(8px)' }}>
+              <div className="flex items-center gap-1 px-2 py-1" style={{ backgroundColor: 'rgba(55, 65, 81, 0.5)', borderRadius: '10px', width: '146px', height: '48px', transform: 'translateX(13px)' }}>
                 <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2Ffb6fb834270f414b9c5cd5f21643fcc1" alt="OperateForYou" className="h-10 w-auto object-contain brightness-0 invert" />
                 <img src="https://cdn.builder.io/api/v1/image/assets%2F33c55feb7bb542699c50b2b385d21d9f%2F11b71ac627234a73ab8fdf09d5c02add" alt="OperateForYou" className="h-28 w-auto object-contain brightness-0 invert translate-y-1" style={{ transform: 'translateX(-9px) translateY(3px)' }} />
               </div>
